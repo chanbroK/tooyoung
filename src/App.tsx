@@ -1,4 +1,5 @@
 import "animate.css/animate.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ScrollAnimation from "react-animate-on-scroll";
 import React from "react";
 import sample from "./sample.jpg";
