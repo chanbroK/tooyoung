@@ -21,10 +21,8 @@ export default function FirstPage() {
           position: "absolute",
         }}
       />
-      <div className="fixed-bottom">
-        <h6 style={{ marginRight: "10%", float: "right", marginBottom: "1%" }}>
-          @TooYoungToDisappear
-        </h6>
+      <div style={{ top: "90%", left: "80%", position: "absolute" }}>
+        <h6>@TooYoungToDisappear</h6>
       </div>
     </div>
   );
