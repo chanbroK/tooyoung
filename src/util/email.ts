@@ -21,6 +21,14 @@ export const saveToFireStore = (email: string, name: string, reason: string, pho
     연락처: phone,
   });
 };
+export const sendSlack = (email: string, name: string, reason: string, phone: string) => {
+  //https://twojobui.tistory.com/46
+  return;
+};
+export const registEmail = (email: string, name: string, reason: string, phone: string) => {
+  saveToFireStore(email, name, reason, phone);
+  sendSlack(email, name, reason, phone);
+};
 export const loadFromFireStore = async () => {
   return await db.collection("Email").get();
 };
