@@ -2,7 +2,9 @@ import App from "./App";
 import FirstPage from "./component/FirstPage";
 import React from "react";
 import * as Scroll from "react-scroll";
-
+import SecondPage from "./component/SecondPage";
+import ThirdPage from "./component/ThirdPage";
+import Contact from "./component/Contact";
 const Normal = () => {
   React.useEffect(() => {
     Scroll.Events.scrollEvent.register("begin", (to, element) => {
@@ -14,7 +16,8 @@ const Normal = () => {
   }, []);
   return (
     <div>
-      <FirstPage />
+      <Contact />
+
       <App />
     </div>
   );

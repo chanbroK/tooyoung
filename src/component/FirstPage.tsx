@@ -21,8 +21,8 @@ export default function FirstPage() {
           position: "absolute",
         }}
       />
-      <div style={{ top: "90%", left: "80%", position: "absolute" }}>
-        <h6>@TooYoungToDisappear</h6>
+      <div style={{ top: "95%", left: "80%", position: "absolute" }}>
+        <h6 style={{ fontWeight: "lighter" }}>@TooYoungToDisappear</h6>
       </div>
     </div>
   );
