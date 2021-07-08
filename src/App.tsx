@@ -18,9 +18,9 @@ const App = () => {
       once: false,
       mirror: false,
     });
-    window.onscroll = () => {
-      scrollAction(divRef.current.clientHeight);
-    };
+    // window.onscroll = () => {
+    //   scrollAction(divRef.current.clientHeight);
+    // };
   });
   for (let i = 0; i < 20; i++) {
     result.push(
@@ -33,20 +33,14 @@ const App = () => {
         <img src={sampleImg} height="100%" alt="sample" />
         <button
           onClick={() => {
-            window.scrollTo(
-              window.scrollX,
-              window.scrollY + divRef.current.clientHeight
-            );
+            window.scrollTo(window.scrollX, window.scrollY + divRef.current.clientHeight);
           }}
         >
           down
         </button>
         <button
           onClick={() => {
-            window.scrollTo(
-              window.scrollX,
-              window.scrollY - divRef.current.clientHeight
-            );
+            window.scrollTo(window.scrollX, window.scrollY - divRef.current.clientHeight);
           }}
         >
           up
