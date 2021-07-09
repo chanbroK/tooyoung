@@ -7,10 +7,11 @@ import "aos/dist/aos.css";
 import Contact from "./component/Contact";
 import sampleImg from "./sample.jpg";
 import { scrollAction } from "./scrollAction";
+import FadeIn from "react-fade-in";
 const App = () => {
   const result = [];
   const divRef = React.useRef<HTMLDivElement>();
-
+  const [v, setV] = React.useState(false);
   React.useEffect(() => {
     AOS.init({
       duration: 2000,
@@ -22,33 +23,50 @@ const App = () => {
     //   scrollAction(divRef.current.clientHeight);
     // };
   });
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 1; i++) {
     result.push(
-      <div
-        data-aos="fade-left"
-        data-aos-easing="ease-in-out"
-        style={{ height: "100vh" }}
-        ref={divRef}
-      >
-        <img src={sampleImg} height="100%" alt="sample" />
-        <button
+      // <div
+      //   data-aos="fade-left"
+      //   data-aos-easing="ease-in-out"
+      //   style={{ height: "100vh" }}
+      //   ref={divRef}
+      // >
+      <FadeIn>
+        {v ? <img src={sampleImg} height="100vh" alt="sample" /> : null}
+        {/* <img src={sampleImg} height="100%" alt="sample" /> */}
+        {/* <button
           onClick={() => {
             window.scrollTo(window.scrollX, window.scrollY + divRef.current.clientHeight);
           }}
         >
           down
-        </button>
+        </button> 
         <button
           onClick={() => {
             window.scrollTo(window.scrollX, window.scrollY - divRef.current.clientHeight);
           }}
         >
           up
+        </button> */}
+        <button
+          onClick={() => {
+            setV((o) => !o);
+          }}
+        >
+          click
         </button>
-      </div>
+        {/* </div> */}
+      </FadeIn>
     );
   }
-  return <div>{result}</div>;
+  return (
+    <FadeIn transitionDuration={10000}>
+      <div id="1">
+        <span>element1</span>
+        <img src={sampleImg} height="100vh" alt="sample" />
+      </div>
+    </FadeIn>
+  );
 };
 
 export default App;
