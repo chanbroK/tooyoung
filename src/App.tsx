@@ -22,7 +22,7 @@ const App = () => {
     };
   }, [curDivId]);
   return (
-    <div>
+    <div style={{ fontFamily: "NanumBarumGothic" }}>
       {curDivId === 1 ? (
         <FadeIn transitionDuration={1500} visible={true}>
           <Contact />
