@@ -7,3 +7,10 @@
   font-family: "NanumBarunGothicBold";
   src: url("./font/NanumBarunGothicBold.ttf") format("truetype");
 }
+.root{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.root::-webkit-scrollbar{
+  display:none;
+}
