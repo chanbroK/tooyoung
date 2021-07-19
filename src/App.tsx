@@ -4,6 +4,11 @@ import React from "react";
 import "aos/dist/aos.css";
 import Contact from "./component/Contact";
 import FadeIn from "react-fade-in";
+import FirstPage from "./component/FirstPage";
+import SecondPage from "./component/SecondPage";
+import ThirdPage from "./component/ThirdPage";
+import { Last } from "react-bootstrap/esm/PageItem";
+import LastPage from "./component/LastPage";
 const MAX = 10;
 const MIN = 1;
 
@@ -25,17 +30,17 @@ const App = () => {
     <div style={{ fontFamily: "NanumBarumGothic" }}>
       {curDivId === 1 ? (
         <FadeIn transitionDuration={1500} visible={true}>
-          <Contact />
+          <FirstPage />
         </FadeIn>
       ) : null}
       {curDivId === 2 ? (
         <FadeIn transitionDuration={1500} visible={true}>
-          <Contact />
+          <SecondPage />
         </FadeIn>
       ) : null}
       {curDivId === 3 ? (
         <FadeIn transitionDuration={1500} visible={true}>
-          <Contact />
+          <ThirdPage />
         </FadeIn>
       ) : null}
       {curDivId === 4 ? (
@@ -45,7 +50,7 @@ const App = () => {
       ) : null}
       {curDivId === 5 ? (
         <FadeIn transitionDuration={1500} visible={true}>
-          <Contact />
+          <LastPage />
         </FadeIn>
       ) : null}
       {curDivId === 6 ? (
