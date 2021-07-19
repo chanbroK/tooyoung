@@ -21,7 +21,9 @@ export default function Contact() {
         </a>
       </div>
       <div style={{ top: "95%", left: "20%", position: "absolute" }}>
-        <a style={{ color: "white", fontSize: "1.5vw" }}>개인정보 처리방침</a>
+        <a style={{ color: "white", fontSize: "1.5vw", textAlign: "center" }}>
+          개인정보 처리방침
+        </a>
       </div>
       <div style={{ top: "20%", left: "70%", position: "absolute" }}>
         <a style={{ fontSize: "3vw", fontWeight: "lighter" }}>CONTACT US</a>
@@ -35,6 +37,33 @@ export default function Contact() {
             textAlign: "center",
             borderRadius: 10,
             borderColor: "black",
+          }}
+        />
+      </Form>
+      <div style={{ top: "60%", left: "72%", position: "absolute" }}>
+        <a
+          style={{
+            fontSize: "3vw",
+            fontWeight: "lighter",
+            color: "white",
+            textAlign: "center",
+          }}
+        >
+          BUSINESS <br />
+          CONTACT
+        </a>
+      </div>
+      <Form style={{ top: "80%", left: "67%", position: "absolute" }}>
+        <Form.Control
+          type="email"
+          placeholder="tooyoungtodisappear@gmail.com"
+          style={{
+            backgroundColor: "black",
+            width: "22vw",
+            textAlign: "center",
+            borderRadius: 10,
+            borderColor: "white",
+            color: "white",
           }}
         />
       </Form>
