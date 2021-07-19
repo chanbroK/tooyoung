@@ -1,5 +1,5 @@
 import React from "react";
-
+import logoImage from "./images/mainlogo.jpeg";
 export default function FirstPage() {
   return (
     <div>
@@ -10,7 +10,7 @@ export default function FirstPage() {
         style={{ backgroundColor: "white", width: "100vw", height: "50vh" }}
       ></div>
       <img
-        src={require("./images/mainlogo.jpeg")}
+        src={logoImage}
         style={{
           justifyContent: "center",
           top: "50%",
