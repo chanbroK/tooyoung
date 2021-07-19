@@ -11,19 +11,15 @@ import { Last } from "react-bootstrap/esm/PageItem";
 import LastPage from "./component/LastPage";
 import { Helmet } from "react-helmet";
 import logoImage from "./component/images/mainlogo.jpeg";
-const MAX = 10;
+const MAX = 5;
 const MIN = 1;
-
-
-
-
 
 const App = () => {
   const [curDivId, setCurDivId] = React.useState(1);
 
-  const moveToDiv = (d)=>{
+  const moveToDiv = (d) => {
     setCurDivId(d);
-  }
+  };
   React.useEffect(() => {
     window.onwheel = (event: WheelEvent) => {
       if (event.deltaY > 0 && curDivId < MAX) {
@@ -67,7 +63,7 @@ const App = () => {
             <LastPage />
           </FadeIn>
         ) : null}
-        {curDivId === 6 ? (
+        {/* {curDivId === 6 ? (
           <FadeIn transitionDuration={1500} visible={true}>
             <Contact />
           </FadeIn>
@@ -91,7 +87,7 @@ const App = () => {
           <FadeIn transitionDuration={1500} visible={true}>
             <Contact />
           </FadeIn>
-        ) : null}
+        ) : null} */}
       </div>
     </>
   );

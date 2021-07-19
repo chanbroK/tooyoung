@@ -24,6 +24,28 @@ export default function FirstPage() {
       <div style={{ top: "95%", left: "80%", position: "absolute" }}>
         <h6 style={{ fontWeight: "lighter" }}>@TooYoungToDisappear</h6>
       </div>
+      <ul style={{ position: "absolute", top: "41%", left: "95%" }}>
+        <li
+          className="fas fa-circle"
+          style={{ color: "#333333", fontSize: "2vw", marginBottom: "-2vh" }}
+        ></li>
+        <li
+          className="fas fa-circle"
+          style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
+        ></li>
+        <li
+          className="fas fa-circle"
+          style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
+        ></li>
+        <li
+          className="fas fa-circle"
+          style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
+        ></li>
+        <li
+          className="fas fa-circle"
+          style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
+        ></li>
+      </ul>
     </div>
   );
 }
