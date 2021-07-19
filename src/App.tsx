@@ -14,16 +14,21 @@ import logoImage from "./component/images/mainlogo.jpeg";
 const MAX = 10;
 const MIN = 1;
 
+
+
+
+
 const App = () => {
   const [curDivId, setCurDivId] = React.useState(1);
+
+  const moveToDiv = (d)=>{
+    setCurDivId(d);
+  }
   React.useEffect(() => {
     window.onwheel = (event: WheelEvent) => {
-      console.log(event.deltaY);
       if (event.deltaY > 0 && curDivId < MAX) {
-        console.log("down");
         setCurDivId((o) => o + 1);
       } else if (event.deltaY < 0 && curDivId > MIN) {
-        console.log("up");
         setCurDivId((o) => o - 1);
       }
     };
