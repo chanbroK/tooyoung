@@ -1,6 +1,10 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
+
+import { registEmail } from "../util/email";
 export default function Contact() {
+  const subEmailRef = React.useRef<HTMLInputElement>(null);
+  const conEmailRef = React.useRef<HTMLInputElement>(null);
   return (
     <div>
       <div
@@ -28,10 +32,22 @@ export default function Contact() {
       <div style={{ top: "20%", left: "70%", position: "absolute" }}>
         <a style={{ fontSize: "3vw", fontWeight: "lighter" }}>CONTACT US</a>
       </div>
-      <Form style={{ top: "30%", left: "67%", position: "absolute" }}>
+      <Form
+        style={{ top: "30%", left: "67%", position: "absolute" }}
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (subEmailRef.current) {
+            registEmail(subEmailRef.current.value, "none", "구독", "none");
+          }
+        }}
+      >
+        <Form.Label>
+          소식 구독을 원한다면, 아래에 이메일을 입력해주세요.
+        </Form.Label>
         <Form.Control
           type="email"
-          placeholder="tooyoungtodisappear@gmail.com"
+          placeholder="example@example.com"
+          ref={subEmailRef}
           style={{
             width: "22vw",
             textAlign: "center",
@@ -53,10 +69,20 @@ export default function Contact() {
           CONTACT
         </a>
       </div>
-      <Form style={{ top: "80%", left: "67%", position: "absolute" }}>
+      <Form
+        style={{ top: "80%", left: "67%", position: "absolute" }}
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (conEmailRef.current) {
+            registEmail(conEmailRef.current.value, "none", "구독", "none");
+          }
+        }}
+      >
+        <Form.Label>협업을 원한다면, 아래에 이메일을 입력해주세요.</Form.Label>
         <Form.Control
           type="email"
-          placeholder="tooyoungtodisappear@gmail.com"
+          placeholder="example@example.com"
+          ref={conEmailRef}
           style={{
             backgroundColor: "black",
             width: "22vw",

@@ -8,28 +8,35 @@ const RegistEmail = () => {
 
   return (
     <form
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault();
-        if (emailRef.current && nameRef.current && phoneRef.current && reasonRef.current) {
+        if (emailRef.current && nameRef.current && phoneRef.current) {
           saveEmail.saveToFireStore(
             emailRef.current.value,
             nameRef.current.value,
-            reasonRef.current.value,
-            phoneRef.current.value
+            phoneRef.current.value,
+            "구독"
           );
         }
         emailRef.current.value = "";
         nameRef.current.value = "";
-        reasonRef.current.value = "";
         phoneRef.current.value = "";
       }}
     >
       <input type="submit" value="등록" />
-      <input type="text" ref={nameRef} />
-      <input type="text" ref={emailRef} />
-      <input type="text" ref={phoneRef} />
-      {/* 구독 or 협업 */}
-      <input type="text" ref={reasonRef} />
+      <label>
+        이름:
+        <input type="text" ref={nameRef} />
+      </label>
+
+      <label>
+        이메일:
+        <input type="text" ref={emailRef} />
+      </label>
+      <label>
+        연락처:
+        <input type="text" ref={phoneRef} />
+      </label>
     </form>
   );
 };

@@ -4,7 +4,6 @@ import Contact from "./component/Contact";
 const Normal = () => {
   return (
     <div>
-      <Contact />
       <App />
     </div>
   );
