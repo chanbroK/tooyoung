@@ -3,12 +3,12 @@ import * as saveEmail from "../util/email";
 const SaveEmail = () => {
   return (
     <button
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault();
         saveEmail.saveToExcel();
       }}
     >
-      저장
+      Save Contact Email To Excel
     </button>
   );
 };
