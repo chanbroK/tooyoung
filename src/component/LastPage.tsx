@@ -67,9 +67,7 @@ export default function LastPage() {
       <div style={{ top: "90%", left: "65%", position: "absolute" }}>
         <a style={{ fontWeight: "lighter" }}>
           대표 번호 : 010-0000-0000 <br />
-          <Link to="/tooyoung" style={{ color: "black", textDecoration: "none" }}>
-            대표 메일 : tooyoungtodisappear@gmail.com
-          </Link>
+          대표 메일 : tooyoungtodisappear@gmail.com
         </a>
       </div>
     </div>
