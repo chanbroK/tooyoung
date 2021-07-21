@@ -1,14 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function LastPage() {
   return (
     <div>
-      <div
-        style={{ backgroundColor: "black", width: "100vw", height: "50vh" }}
-      ></div>
-      <div
-        style={{ backgroundColor: "white", width: "100vw", height: "50vh" }}
-      ></div>
+      <div style={{ backgroundColor: "black", width: "100vw", height: "50vh" }}></div>
+      <div style={{ backgroundColor: "white", width: "100vw", height: "50vh" }}></div>
       <div
         style={{
           justifyContent: "center",
@@ -70,7 +67,9 @@ export default function LastPage() {
       <div style={{ top: "90%", left: "65%", position: "absolute" }}>
         <a style={{ fontWeight: "lighter" }}>
           대표 번호 : 010-0000-0000 <br />
-          대표 메일 : tooyoungtodisappear@gmail.com
+          <Link to="/tooyoung" style={{ color: "black", textDecoration: "none" }}>
+            대표 메일 : tooyoungtodisappear@gmail.com
+          </Link>
         </a>
       </div>
     </div>
