@@ -1,14 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function LastPage() {
   return (
     <div>
-      <div
-        style={{ backgroundColor: "black", width: "100vw", height: "50vh" }}
-      ></div>
-      <div
-        style={{ backgroundColor: "white", width: "100vw", height: "50vh" }}
-      ></div>
+      <div style={{ backgroundColor: "black", width: "100vw", height: "50vh" }}></div>
+      <div style={{ backgroundColor: "white", width: "100vw", height: "50vh" }}></div>
       <div
         style={{
           justifyContent: "center",
