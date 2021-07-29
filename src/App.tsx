@@ -40,7 +40,7 @@ const App = () => {
       <div style={{ fontFamily: "NanumBarumGothic" }}>
         {curDivId === 1 ? (
           <FadeIn transitionDuration={1500} visible={true}>
-            <FirstPage />
+            <SecondPage />
           </FadeIn>
         ) : null}
         {curDivId === 2 ? (

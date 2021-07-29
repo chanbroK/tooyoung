@@ -1,5 +1,5 @@
 import React from "react";
-
+import logoImage from "./images/한자투영.png";
 export default function ThirdPage() {
   return (
     <div>
@@ -42,6 +42,18 @@ export default function ThirdPage() {
             선호도를 파악할 수 있습니다.
           </a>
         </div>
+        <img
+          src={logoImage}
+          style={{
+            justifyContent: "center",
+            top: "50%",
+            left: "70%",
+            transform: `translate(-50%,-50%)`,
+            width: "25vw",
+            height: "40vh",
+            position: "absolute",
+          }}
+        />
         <div style={{ top: "95%", left: "80%", position: "absolute" }}>
           <h6 style={{ fontWeight: "lighter" }}>@TooYoungToDisappear</h6>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import logoImage from "./images/얼굴로고.png";
 export default function SecondPage() {
   return (
     <div>
@@ -26,6 +26,18 @@ export default function SecondPage() {
           "판매연계형 포트폴리오 사이트" 입니다.
         </a>
       </div>
+      <img
+        src={logoImage}
+        style={{
+          justifyContent: "center",
+          top: "50%",
+          left: "70%",
+          transform: `translate(-50%,-50%)`,
+          width: "25vw",
+          height: "40vh",
+          position: "absolute",
+        }}
+      />
       <div style={{ top: "74%", left: "21%", position: "absolute" }}>
         <a style={{ fontSize: "1.4vw", fontWeight: "bold", color: "white" }}>
           브랜드의 새로운 홍보공간
