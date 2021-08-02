@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 export default function LastPage() {
   return (
     <div>
-      <div style={{ backgroundColor: "black", width: "100vw", height: "50vh" }}></div>
-      <div style={{ backgroundColor: "white", width: "100vw", height: "50vh" }}></div>
+      <div
+        style={{ backgroundColor: "black", width: "100vw", height: "50vh" }}
+      ></div>
+      <div
+        style={{ backgroundColor: "white", width: "100vw", height: "50vh" }}
+      ></div>
       <div
         style={{
           justifyContent: "center",
@@ -20,11 +24,13 @@ export default function LastPage() {
       ></div>
       <div style={{ top: "75%", left: "15%", position: "absolute" }}>
         <a
+          // href="/pdf/투영제안서.pdf"
           style={{
             fontFamily: "NanumBarunGothicBold",
             color: "black",
             fontSize: "1.5vw",
           }}
+          download="투영제안서.pdf"
         >
           TooYoung 사업제안서 <br />
           2021 가을시즌 We Love Our Planet

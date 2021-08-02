@@ -34,8 +34,8 @@ const App = () => {
     <>
       <Helmet>
         <title>TooYoung</title>
-        <meta name="ABC" content="ABC" />
-        <link rel="icon" type="image/jpeg" href={logoImage} sizes="16x16" />
+        <meta charSet="utf-8" />
+        <link rel="icon" type="image/jpeg" href={logoImage} />
       </Helmet>
       <div style={{ fontFamily: "NanumBarumGothic" }}>
         {curDivId === 1 ? (
