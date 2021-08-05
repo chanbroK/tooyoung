@@ -1,6 +1,6 @@
 import React from "react";
 import logoImage from "./images/한자투영.png";
-export default function ThirdPage() {
+export default function ThirdPage({changeCurDivId}) {
   return (
     <div>
       <div>
@@ -59,23 +59,33 @@ export default function ThirdPage() {
         </div>
       </div>
       <ul style={{ position: "absolute", top: "41%", left: "95%" }}>
-        <li
+        <li onClick={()=>{
+          changeCurDivId(1);
+        }}
           className="fas fa-circle"
           style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>
-        <li
+        <li onClick={()=>{
+          changeCurDivId(2);
+        }}
           className="fas fa-circle"
           style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>
-        <li
+        <li onClick={()=>{
+          changeCurDivId(3);
+        }}
           className="fas fa-circle"
           style={{ color: "#333333", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>
-        <li
+        <li onClick={()=>{
+          changeCurDivId(4);
+        }}
           className="fas fa-circle"
           style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>
-        <li
+        <li onClick={()=>{
+          changeCurDivId(5);
+        }}
           className="fas fa-circle"
           style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>

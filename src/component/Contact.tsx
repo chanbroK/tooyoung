@@ -2,7 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 
 import { registEmail } from "../util/email";
-export default function Contact() {
+export default function Contact({changeCurDivId}) {
   const subEmailRef = React.useRef<HTMLInputElement>(null);
   const conEmailRef = React.useRef<HTMLInputElement>(null);
   return (
@@ -94,23 +94,33 @@ export default function Contact() {
         />
       </Form>
       <ul style={{ position: "absolute", top: "41%", left: "95%" }}>
-        <li
+        <li onClick={()=>{
+            changeCurDivId(1);
+        }}
           className="fas fa-circle"
           style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>
-        <li
+          <li onClick={()=>{
+              changeCurDivId(2);
+          }}
           className="fas fa-circle"
           style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>
-        <li
+          <li onClick={()=>{
+              changeCurDivId(3);
+          }}
           className="fas fa-circle"
           style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>
-        <li
+          <li onClick={()=>{
+              changeCurDivId(4);
+          }}
           className="fas fa-circle"
           style={{ color: "#333333", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>
-        <li
+          <li onClick={()=>{
+              changeCurDivId(5);
+          }}
           className="fas fa-circle"
           style={{ color: "#CECFCF", fontSize: "2vw", marginBottom: "-2vh" }}
         ></li>

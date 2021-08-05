@@ -16,10 +16,9 @@ const MIN = 1;
 
 const App = () => {
   const [curDivId, setCurDivId] = React.useState(1);
-
-  const moveToDiv = (d) => {
-    setCurDivId(d);
-  };
+  const changeCurDivId = (id) => {
+    setCurDivId(id);
+  }
   React.useEffect(() => {
     window.onwheel = (event: WheelEvent) => {
       if (event.deltaY > 0 && curDivId < MAX) {
@@ -40,27 +39,27 @@ const App = () => {
       <div style={{ fontFamily: "NanumBarumGothic" }}>
         {curDivId === 1 ? (
           <FadeIn transitionDuration={1500} visible={true}>
-            <FirstPage />
+            <FirstPage changeCurDivId={changeCurDivId}/>
           </FadeIn>
         ) : null}
         {curDivId === 2 ? (
           <FadeIn transitionDuration={1500} visible={true}>
-            <SecondPage />
+            <SecondPage changeCurDivId={changeCurDivId}/>
           </FadeIn>
         ) : null}
         {curDivId === 3 ? (
           <FadeIn transitionDuration={1500} visible={true}>
-            <ThirdPage />
+            <ThirdPage changeCurDivId={changeCurDivId}/>
           </FadeIn>
         ) : null}
         {curDivId === 4 ? (
           <FadeIn transitionDuration={1500} visible={true}>
-            <Contact />
+            <Contact changeCurDivId={changeCurDivId}/>
           </FadeIn>
         ) : null}
         {curDivId === 5 ? (
           <FadeIn transitionDuration={1500} visible={true}>
-            <LastPage />
+            <LastPage changeCurDivId={changeCurDivId}/>
           </FadeIn>
         ) : null}
         {/* {curDivId === 6 ? (
