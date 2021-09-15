@@ -10,7 +10,7 @@ export default function NavB() {
         zIndex: 5,
         width: "100%",
         height: "120px",
-
+        backgroundColor: "white",
         borderWidth: 10,
         borderBottom: "1px solid rgb(212, 212, 212)",
       }}

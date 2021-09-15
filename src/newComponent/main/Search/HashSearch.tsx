@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { BsSearch } from "react-icons/bs";
 export default function HashSearch() {
   const [SearchField, setSearchField] = useState("");
   return (
@@ -26,7 +27,8 @@ export default function HashSearch() {
           type="search"
           onChange={(e) => setSearchField(e.target.value)}
           style={{ width: "80%" }}
-        ></input>
+        />
+        <BsSearch style={{ marginLeft: "-20px" }} />
       </div>
     </div>
   );
