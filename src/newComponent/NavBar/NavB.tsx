@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../component/images/투영 로고 글씨.png";
+import { Link } from "react-router-dom";
 export default function NavB() {
   return (
     <nav
@@ -14,17 +15,39 @@ export default function NavB() {
         borderBottom: "1px solid rgb(212, 212, 212)",
       }}
     >
-      <img
-        src={logo}
+      <Link to="/">
+        <img
+          src={logo}
+          style={{
+            position: "absolute",
+            left: "50%",
+            width: "300px",
+            height: "100px",
+            top: "50%",
+            transform: "translate(-50%,-50%)",
+          }}
+        />
+      </Link>
+      <a
         style={{
           position: "absolute",
-          left: "50%",
-          width: "300px",
-          height: "100px",
-          top: "50%",
+          left: "85%",
+          top: "70%",
           transform: "translate(-50%,-50%)",
         }}
-      />
+      >
+        LOGIN
+      </a>
+      <a
+        style={{
+          position: "absolute",
+          left: "90%",
+          top: "70%",
+          transform: "translate(-50%,-50%)",
+        }}
+      >
+        JOIN
+      </a>
     </nav>
   );
 }
