@@ -1,6 +1,6 @@
 import "animate.css/animate.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
+import React, { useState } from "react";
 import "aos/dist/aos.css";
 import Contact from "./component/Contact";
 import FadeIn from "react-fade-in";
@@ -11,9 +11,14 @@ import { Last } from "react-bootstrap/esm/PageItem";
 import LastPage from "./component/LastPage";
 import { Helmet } from "react-helmet";
 import logoImage from "./component/images/mainlogo.jpeg";
-import Main from "./newComponent/main/Main";
-
+import * as ReactRouterDom from "react-router-dom";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
+import Main from "./newComponent/main/Main";
+import NavB from "./newComponent/NavBar/NavB";
+import Detail from "./newComponent/Detail/Detail";
+import Product from "./newComponent/Product/Product";
+import Normal from "./Normal";
+import Manager from "./Manager";
 const MAX = 5;
 const MIN = 1;
 
@@ -32,6 +37,8 @@ const App = () => {
     };
   }, [curDivId]);
   const webTitle = "TooYoung";
+
+  const [shoes, setshoes] = useState(Product);
   return (
     <>
       <Helmet>
@@ -41,7 +48,15 @@ const App = () => {
       </Helmet>
 
       <div style={{ fontFamily: "NanumBarumGothic" }}>
-        {curDivId === 1 ? (
+        <ReactRouterDom.Route path="/" component={Normal} exact />
+        <ReactRouterDom.Route path="/tooyoung" component={Manager} exact />
+        <ReactRouterDom.Route path="/main" component={Main} exact />
+        <ReactRouterDom.Route path="/Detail/:id">
+          <Detail shoes={shoes} />
+        </ReactRouterDom.Route>
+      </div>
+    </>
+    /* {curDivId === 1 ? (
           <FadeIn transitionDuration={1500} visible={true}>
             <FirstPage changeCurDivId={changeCurDivId} />
           </FadeIn>
@@ -66,8 +81,8 @@ const App = () => {
             <LastPage changeCurDivId={changeCurDivId} />
           </FadeIn>
         ) : null}
-      </div>
-      {/* {curDivId === 6 ? (
+      </div> */
+    /* {curDivId === 6 ? (
           <FadeIn transitionDuration={1500} visible={true}>
             <Contact />
           </FadeIn>
@@ -91,8 +106,7 @@ const App = () => {
           <FadeIn transitionDuration={1500} visible={true}>
             <Contact />
           </FadeIn>
-        ) : null} */}
-    </>
+        ) : null} */
   );
 };
 

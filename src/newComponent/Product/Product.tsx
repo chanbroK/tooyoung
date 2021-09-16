@@ -1,4 +1,5 @@
 import React from "react";
+import faceLogo from "../../component/images/얼굴로고.png";
 
 const Product = [
   {
@@ -23,6 +24,48 @@ const Product = [
     content: "Born in the States",
     price: `130,000`,
     img: "https://image.adidas.co.kr/upload/prod/basic/source/FV6956-01-01.jpg",
+  },
+  {
+    id: 3,
+    title: "투영 얼굴로고",
+    content: "Famous People",
+    img: faceLogo,
+    price: `120,000`,
+  },
+  {
+    id: 4,
+    title: "투영 얼굴로고",
+    content: "Famous People",
+    img: faceLogo,
+    price: `120,000`,
+  },
+  {
+    id: 5,
+    title: "투영 얼굴로고",
+    content: "Famous People",
+    img: faceLogo,
+    price: `120,000`,
+  },
+  {
+    id: 6,
+    title: "투영 얼굴로고",
+    content: "Famous People",
+    img: faceLogo,
+    price: `120,000`,
+  },
+  {
+    id: 7,
+    title: "투영 얼굴로고",
+    content: "Famous People",
+    img: faceLogo,
+    price: `120,000`,
+  },
+  {
+    id: 8,
+    title: "투영 얼굴로고",
+    content: "Famous People",
+    img: faceLogo,
+    price: `120,000`,
   },
 ];
 

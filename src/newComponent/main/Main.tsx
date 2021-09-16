@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import * as ReactRouterDom from "react-router-dom";
 import NavB from "../NavBar/NavB";
 import Banner from "./Banner/Banner";
 import HashSearch from "./Search/HashSearch";
 import Product from "./Product/ProductCard";
 import ScrollContainer from "react-indiana-drag-scroll";
 import Data from "../Product/Product";
+import Detail from "../Detail/Detail";
 export default function Main() {
   const [shoes, setShoes] = useState(Data);
   return (
@@ -26,9 +28,12 @@ export default function Main() {
               <HashSearch />
             </div>
           </div>
-          <div>
-            <Product shoes={shoes} />
-            <Product shoes={shoes} />
+          <div className="container" style={{ marginTop: "5%" }}>
+            <div className="row">
+              {shoes.map((num, i) => {
+                return <Product shoes={num} i={i} key={i} />;
+              })}
+            </div>
           </div>
         </div>
       </div>
