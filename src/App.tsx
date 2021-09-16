@@ -48,9 +48,8 @@ const App = () => {
       </Helmet>
 
       <div style={{ fontFamily: "NanumBarumGothic" }}>
-        <ReactRouterDom.Route path="/" component={Normal} exact />
         <ReactRouterDom.Route path="/tooyoung" component={Manager} exact />
-        <ReactRouterDom.Route path="/main" component={Main} exact />
+        <ReactRouterDom.Route path="/" component={Main} exact />
         <ReactRouterDom.Route path="/Detail/:id">
           <Detail shoes={shoes} />
         </ReactRouterDom.Route>
