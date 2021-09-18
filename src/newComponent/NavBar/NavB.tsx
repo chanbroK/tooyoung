@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../component/images/투영 로고 글씨.png";
+import logo from "../../component/images/투영 로고.png";
 import { Link } from "react-router-dom";
 export default function NavB() {
   return (
@@ -21,8 +21,8 @@ export default function NavB() {
           style={{
             position: "absolute",
             left: "50%",
-            width: "300px",
-            height: "100px",
+            width: "80px",
+            height: "80px",
             top: "50%",
             transform: "translate(-50%,-50%)",
           }}
