@@ -8,7 +8,7 @@ export default function SearchInput() {
         <input
           type="search"
           value={SearchField}
-          onChange={(e) => setSearchField(e.target.value)}
+          onChange={(e) => setSearchField(e.currentTarget.value)}
           style={{ width: "80%" }}
         />
       </div>

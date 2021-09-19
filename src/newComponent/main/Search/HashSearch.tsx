@@ -25,7 +25,7 @@ export default function HashSearch() {
       <div style={{ marginLeft: "50%", marginTop: "5%" }}>
         <input
           type="search"
-          onChange={(e) => setSearchField(e.target.value)}
+          onChange={(e) => setSearchField(e.currentTarget.value)}
           style={{ width: "80%" }}
         />
         <BsSearch style={{ marginLeft: "-20px" }} />

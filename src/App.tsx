@@ -19,6 +19,7 @@ import Detail from "./newComponent/Detail/Detail";
 import Product from "./newComponent/Product/Product";
 import Normal from "./Normal";
 import Manager from "./Manager";
+import upload from "./newComponent/Upload/Upload";
 const MAX = 5;
 const MIN = 1;
 
@@ -53,6 +54,7 @@ const App = () => {
         <ReactRouterDom.Route path="/Detail/:id">
           <Detail shoes={shoes} />
         </ReactRouterDom.Route>
+        <ReactRouterDom.Route path="/upload" component={upload} />
       </div>
     </>
     /* {curDivId === 1 ? (
