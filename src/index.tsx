@@ -11,7 +11,7 @@ import Main from "./newComponent/main/Main";
 import NavB from "./newComponent/NavBar/NavB";
 import Detail from "./newComponent/Detail/Detail";
 import Product from "./newComponent/Product/Product";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 ReactDOM.render(
   <React.StrictMode>
     {/* <RemoveScroll> */}
