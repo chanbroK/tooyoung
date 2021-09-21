@@ -20,6 +20,9 @@ import Product from "./newComponent/Product/Product";
 import Normal from "./Normal";
 import Manager from "./Manager";
 import upload from "./newComponent/Upload/Upload";
+import signup from "./newComponent/SignUp/SignUp";
+import Login from "./newComponent/LoginPage/LoginPage";
+
 const MAX = 5;
 const MIN = 1;
 
@@ -55,6 +58,8 @@ const App = () => {
           <Detail shoes={shoes} />
         </ReactRouterDom.Route>
         <ReactRouterDom.Route path="/upload" component={upload} />
+        <ReactRouterDom.Route path="/signup" component={signup} />
+        <ReactRouterDom.Route path="/login" component={Login} />
       </div>
     </>
     /* {curDivId === 1 ? (

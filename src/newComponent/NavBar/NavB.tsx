@@ -28,26 +28,30 @@ export default function NavB() {
           }}
         />
       </Link>
-      <a
-        style={{
-          position: "absolute",
-          left: "85%",
-          top: "70%",
-          transform: "translate(-50%,-50%)",
-        }}
-      >
-        LOGIN
-      </a>
-      <a
-        style={{
-          position: "absolute",
-          left: "90%",
-          top: "70%",
-          transform: "translate(-50%,-50%)",
-        }}
-      >
-        JOIN
-      </a>
+      <Link to="/login">
+        <a
+          style={{
+            position: "absolute",
+            left: "85%",
+            top: "70%",
+            transform: "translate(-50%,-50%)",
+          }}
+        >
+          LOGIN
+        </a>
+      </Link>
+      <Link to="signup">
+        <a
+          style={{
+            position: "absolute",
+            left: "90%",
+            top: "70%",
+            transform: "translate(-50%,-50%)",
+          }}
+        >
+          JOIN
+        </a>
+      </Link>
     </nav>
   );
 }
