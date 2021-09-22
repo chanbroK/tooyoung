@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { auth, db } from "../../Config/Config";
 
-export default function SignUp() {
+export default function SignUp(props) {
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -8,8 +9,28 @@ export default function SignUp() {
 
   const SignUp = (e) => {
     e.preventDefault();
-    console.log("form submit");
-    console.log(Name, Email, Password);
+    auth
+      .createUserWithEmailAndPassword(Email, Password)
+      .then((cred) => {
+        db.collection("UserData")
+          .doc(cred.user.uid)
+          .set({
+            Name: Name,
+            Email: Email,
+            Password: Password,
+          })
+          .then(() => {
+            setName("");
+            setEmail("");
+            setPassword("");
+            setError("");
+            props.history.push("/login");
+          })
+          .catch((err) => setError(err.message));
+      })
+      .catch((err) => setError(err.message));
+    // console.log("form submit");
+    // console.log(Name, Email, Password);
   };
 
   return (
