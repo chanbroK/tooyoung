@@ -12,15 +12,18 @@ import NavB from "./newComponent/NavBar/NavB";
 import Detail from "./newComponent/Detail/Detail";
 import Product from "./newComponent/Product/Product";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ProductsContextProvider } from "./global/ProductsContext";
 ReactDOM.render(
   <React.StrictMode>
     {/* <RemoveScroll> */}
     {/* <NavB /> */}
-    <ReactRouterDom.BrowserRouter>
-      <ReactRouterDom.Switch>
-        <App />
-      </ReactRouterDom.Switch>
-    </ReactRouterDom.BrowserRouter>
+    <ProductsContextProvider>
+      <ReactRouterDom.BrowserRouter>
+        <ReactRouterDom.Switch>
+          <App />
+        </ReactRouterDom.Switch>
+      </ReactRouterDom.BrowserRouter>
+    </ProductsContextProvider>
     {/* </RemoveScroll> */}
   </React.StrictMode>,
   document.getElementById("root")
