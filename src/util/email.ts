@@ -1,11 +1,11 @@
-import { db } from "./firebase";
+import { db } from "../Config/Config";
 import xlsx from "xlsx";
 
 export const saveToExcel = () => {
   const book = xlsx.utils.book_new();
-  loadFromFireStore().then(docs => {
+  loadFromFireStore().then((docs) => {
     let emailData = [];
-    docs.forEach(doc => {
+    docs.forEach((doc) => {
       emailData.push(doc.data());
     });
     const sheet = xlsx.utils.json_to_sheet(emailData);
@@ -13,7 +13,12 @@ export const saveToExcel = () => {
     xlsx.writeFile(book, "customer.xlsx");
   });
 };
-export const saveToFireStore = (email: string, name: string, reason: string, phone: string) => {
+export const saveToFireStore = (
+  email: string,
+  name: string,
+  reason: string,
+  phone: string
+) => {
   db.collection("Email").add({
     이메일: email,
     이름: name,
@@ -21,11 +26,21 @@ export const saveToFireStore = (email: string, name: string, reason: string, pho
     연락처: phone,
   });
 };
-export const sendSlack = (email: string, name: string, reason: string, phone: string) => {
+export const sendSlack = (
+  email: string,
+  name: string,
+  reason: string,
+  phone: string
+) => {
   //https://twojobui.tistory.com/46
   return;
 };
-export const registEmail = (email: string, name: string, reason: string, phone: string) => {
+export const registEmail = (
+  email: string,
+  name: string,
+  reason: string,
+  phone: string
+) => {
   saveToFireStore(email, name, reason, phone);
   sendSlack(email, name, reason, phone);
 };

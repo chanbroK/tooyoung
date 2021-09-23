@@ -21,7 +21,7 @@ import Normal from "./Normal";
 import Manager from "./Manager";
 import upload from "./newComponent/Upload/Upload";
 import { SignUp } from "./newComponent/SignUp/SignUp";
-import Login from "./newComponent/LoginPage/LoginPage";
+import { LoginPage } from "./newComponent/LoginPage/LoginPage";
 
 const MAX = 5;
 const MIN = 1;
@@ -59,7 +59,7 @@ const App = () => {
         </ReactRouterDom.Route>
         <ReactRouterDom.Route path="/upload" component={upload} />
         <ReactRouterDom.Route path="/signup" component={SignUp} />
-        <ReactRouterDom.Route path="/login" component={Login} />
+        <ReactRouterDom.Route path="/login" component={LoginPage} />
       </div>
     </>
     /* {curDivId === 1 ? (

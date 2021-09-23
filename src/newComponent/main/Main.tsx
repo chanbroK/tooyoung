@@ -7,6 +7,7 @@ import Product from "./Product/ProductCard";
 import ScrollContainer from "react-indiana-drag-scroll";
 import Data from "../Product/Product";
 import Detail from "../Detail/Detail";
+import { Products } from "../Products/Products";
 export default function Main() {
   const [shoes, setShoes] = useState(Data);
   return (
@@ -33,6 +34,9 @@ export default function Main() {
               return <Product shoes={num} i={i} key={i} />;
             })}
           </div>
+        </div>
+        <div className="container">
+          <Products />
         </div>
       </div>
     </div>
