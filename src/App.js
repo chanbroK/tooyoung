@@ -21,27 +21,14 @@ import Normal from "./Normal";
 import Manager from "./Manager";
 import upload from "./newComponent/Upload/Upload";
 import { SignUp } from "./newComponent/SignUp/SignUp";
-import { LoginPage } from "./newComponent/LoginPage/LoginPage";
+import LoginPage from "./newComponent/LoginPage/LoginPage";
+import { AuthProvider } from "./Config/AuthContext";
+import PrivateRoute from "./Config/PrivateRoute";
 
 const MAX = 5;
 const MIN = 1;
 
 const App = () => {
-  const [curDivId, setCurDivId] = React.useState(1);
-  const changeCurDivId = (id) => {
-    setCurDivId(id);
-  };
-  React.useEffect(() => {
-    window.onwheel = (event: WheelEvent) => {
-      if (event.deltaY > 0 && curDivId < MAX) {
-        setCurDivId((o) => o + 1);
-      } else if (event.deltaY < 0 && curDivId > MIN) {
-        setCurDivId((o) => o - 1);
-      }
-    };
-  }, [curDivId]);
-  const webTitle = "TooYoung";
-
   const [shoes, setshoes] = useState(Product);
   return (
     <>
@@ -52,14 +39,16 @@ const App = () => {
       </Helmet>
 
       <div style={{ fontFamily: "NanumBarumGothic" }}>
-        <ReactRouterDom.Route path="/tooyoung" component={Manager} exact />
-        <ReactRouterDom.Route path="/" component={Main} exact />
-        <ReactRouterDom.Route path="/Detail/:id">
-          <Detail shoes={shoes} />
-        </ReactRouterDom.Route>
-        <ReactRouterDom.Route path="/upload" component={upload} />
-        <ReactRouterDom.Route path="/signup" component={SignUp} />
-        <ReactRouterDom.Route path="/login" component={LoginPage} />
+        <AuthProvider>
+          <ReactRouterDom.Route path="/tooyoung" component={Manager} exact />
+          <PrivateRoute path="/" component={Main} exact />
+          <ReactRouterDom.Route path="/Detail/:id">
+            <Detail shoes={shoes} />
+          </ReactRouterDom.Route>
+          <ReactRouterDom.Route path="/upload" component={upload} />
+          <ReactRouterDom.Route path="/signup" component={SignUp} />
+          <ReactRouterDom.Route path="/login" component={LoginPage} />
+        </AuthProvider>
       </div>
     </>
     /* {curDivId === 1 ? (
@@ -117,3 +106,18 @@ const App = () => {
 };
 
 export default App;
+
+// const [curDivId, setCurDivId] = React.useState(1);
+// const changeCurDivId = (id) => {
+//   setCurDivId(id);
+// };
+// React.useEffect(() => {
+//   window.onwheel = (event: WheelEvent) => {
+//     if (event.deltaY > 0 && curDivId < MAX) {
+//       setCurDivId((o) => o + 1);
+//     } else if (event.deltaY < 0 && curDivId > MIN) {
+//       setCurDivId((o) => o - 1);
+//     }
+//   };
+// }, [curDivId]);
+// const webTitle = "TooYoung";

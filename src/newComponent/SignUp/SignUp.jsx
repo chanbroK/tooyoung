@@ -27,7 +27,7 @@ export const SignUp = (props) => {
             setEmail("");
             setPassword("");
             setError("");
-            props.history.push("/login");
+            props.history.push("/");
           })
           .catch((err) => setError(err.message));
       })
@@ -80,3 +80,75 @@ export const SignUp = (props) => {
     </div>
   );
 };
+
+// import React, { useRef, useState } from "react";
+// import { Card, Form, Button, Alert } from "react-bootstrap";
+// import { useAuth, currentUser } from "../../Config/AuthContext";
+// import { Link, useHistory } from "react-router-dom";
+// export default function SignUp() {
+//   const emailRef = useRef();
+//   const passwordRef = useRef();
+//   const passwordConfirmRef = useRef();
+//   const nameRef = useRef();
+//   const { signup } = useAuth();
+//   const [error, setError] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const history = useHistory();
+//   async function handleSubmit(e) {
+//     e.preventDefault();
+
+//     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+//       return setError("비밀번호가 일치하지 않습니다.");
+//     }
+//     try {
+//       setLoading(true);
+//       setError("");
+//       await signup(
+//         emailRef.current.value,
+//         passwordRef.current.value,
+//         nameRef.current.value
+//       );
+//       history.push("/");
+//     } catch {
+//       setError("회원가입에 실패했습니다.");
+//     }
+//     setLoading(false);
+//   }
+//   return (
+//     <>
+//       <Card>
+//         <Card.Body>
+//           <h2 className="text-center mb-4">sign up</h2>
+//           {error && <Alert variant="danger">{error}</Alert>}
+//           <Form
+//             style={{ alignItems: "center", maxWidth: "400px" }}
+//             onSubmit={handleSubmit}
+//           >
+//             <Form.Group id="name">
+//               <Form.Label>Name</Form.Label>
+//               <Form.Control type="text" ref={nameRef} required />
+//             </Form.Group>
+//             <Form.Group id="email">
+//               <Form.Label>Email</Form.Label>
+//               <Form.Control type="email" ref={emailRef} required />
+//             </Form.Group>
+//             <Form.Group id="password">
+//               <Form.Label>Password</Form.Label>
+//               <Form.Control type="password" ref={passwordRef} required />
+//             </Form.Group>
+//             <Form.Group id="password-confirm">
+//               <Form.Label>Password Confirmation</Form.Label>
+//               <Form.Control type="password" ref={passwordConfirmRef} required />
+//             </Form.Group>
+//             <Button className="w-100" type="submit" disabled={loading}>
+//               Sign Up
+//             </Button>
+//           </Form>
+//         </Card.Body>
+//       </Card>
+//       <div className="w-100 text-center mt-2">
+//         Already have account? <Link to="/login"> Login</Link>
+//       </div>
+//     </>
+//   );
+// }
