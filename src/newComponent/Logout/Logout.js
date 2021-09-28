@@ -8,6 +8,7 @@ export default function Logout() {
   const { currentUser, logout } = useAuth();
   async function handlelogout() {
     seterror("");
+
     try {
       await logout();
       history.push("/");

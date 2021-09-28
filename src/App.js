@@ -1,18 +1,10 @@
 import "animate.css/animate.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "aos/dist/aos.css";
-import Contact from "./component/Contact";
-import FadeIn from "react-fade-in";
-import FirstPage from "./component/FirstPage";
-import SecondPage from "./component/SecondPage";
-import ThirdPage from "./component/ThirdPage";
-import { Last } from "react-bootstrap/esm/PageItem";
-import LastPage from "./component/LastPage";
 import { Helmet } from "react-helmet";
 import logoImage from "./component/images/mainlogo.jpeg";
 import * as ReactRouterDom from "react-router-dom";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Main from "./newComponent/main/Main";
 import NavB from "./newComponent/NavBar/NavB";
 import Detail from "./newComponent/Detail/Detail";
@@ -21,6 +13,7 @@ import Normal from "./Normal";
 import Manager from "./Manager";
 import upload from "./newComponent/Upload/Upload";
 import { SignUp } from "./newComponent/SignUp/SignUp";
+import { auth, db } from "./Config/Config";
 import LoginPage from "./newComponent/LoginPage/LoginPage";
 import { AuthProvider } from "./Config/AuthContext";
 import PrivateRoute from "./Config/PrivateRoute";
@@ -29,7 +22,11 @@ const MAX = 5;
 const MIN = 1;
 
 const App = () => {
+  const webTitle = "TooYoung";
+
   const [shoes, setshoes] = useState(Product);
+  const [user, setuser] = useState(null);
+
   return (
     <>
       <Helmet>
@@ -51,7 +48,12 @@ const App = () => {
         </AuthProvider>
       </div>
     </>
-    /* {curDivId === 1 ? (
+  );
+};
+
+export default App;
+
+/* {curDivId === 1 ? (
           <FadeIn transitionDuration={1500} visible={true}>
             <FirstPage changeCurDivId={changeCurDivId} />
           </FadeIn>
@@ -77,7 +79,7 @@ const App = () => {
           </FadeIn>
         ) : null}
       </div> */
-    /* {curDivId === 6 ? (
+/* {curDivId === 6 ? (
           <FadeIn transitionDuration={1500} visible={true}>
             <Contact />
           </FadeIn>
@@ -102,22 +104,3 @@ const App = () => {
             <Contact />
           </FadeIn>
         ) : null} */
-  );
-};
-
-export default App;
-
-// const [curDivId, setCurDivId] = React.useState(1);
-// const changeCurDivId = (id) => {
-//   setCurDivId(id);
-// };
-// React.useEffect(() => {
-//   window.onwheel = (event: WheelEvent) => {
-//     if (event.deltaY > 0 && curDivId < MAX) {
-//       setCurDivId((o) => o + 1);
-//     } else if (event.deltaY < 0 && curDivId > MIN) {
-//       setCurDivId((o) => o - 1);
-//     }
-//   };
-// }, [curDivId]);
-// const webTitle = "TooYoung";

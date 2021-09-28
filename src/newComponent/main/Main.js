@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import * as ReactRouterDom from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import NavB from "../NavBar/NavB";
 import Banner from "./Banner/Banner";
 import HashSearch from "./Search/HashSearch";
@@ -8,11 +7,17 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import Data from "../Product/Product";
 import Detail from "../Detail/Detail";
 import { Products } from "../Products/Products";
-export default function Main() {
+import { useHistory } from "react-router-dom";
+import { auth } from "../../Config/Config";
+
+export default function Main({ user }) {
   const [shoes, setShoes] = useState(Data);
+
+  const history = useHistory();
+
   return (
     <div style={{ maxWidth: "100%" }}>
-      <NavB />
+      <NavB user={user} />
       <div style={{ paddingTop: "120px" }}>
         {/* search area */}
         <div
