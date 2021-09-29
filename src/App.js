@@ -39,7 +39,7 @@ const App = () => {
         <AuthProvider>
           <ReactRouterDom.Route path="/tooyoung" component={Manager} exact />
           <PrivateRoute path="/" component={Main} exact />
-          <ReactRouterDom.Route path="/Detail/:id">
+          <ReactRouterDom.Route path="/detail/:id">
             <Detail shoes={shoes} />
           </ReactRouterDom.Route>
           <ReactRouterDom.Route path="/upload" component={upload} />
