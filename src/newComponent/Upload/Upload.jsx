@@ -32,6 +32,13 @@ export default function Upload() {
     }
   };
 
+  const handleChange = (e) => {
+    for (let i = 0; i < e.currentTarget.files.length; i++) {
+      const newImage = e.currentTarget.files[i];
+      setImages((prevState) => [...prevState, newImage]);
+    }
+  };
+
   const addProduct = (e) => {
     e.preventDefault();
     //console.log(Titile, ConTent, Price, IsCategory);

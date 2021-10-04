@@ -54,35 +54,29 @@ export default function NavB() {
       </Link>
       {currentUser ? (
         <>
-          <span
+          <div
+            className="container"
             style={{
               position: "absolute",
-              left: "82%",
+              left: "80%",
               top: "70%",
               transform: "translate(-50%,-50%)",
+              width: "15%",
             }}
           >
-            {user}{" "}
-          </span>
-          <div
-            style={{
-              position: "absolute",
-              left: "85%",
-              top: "65%",
-              transform: "translate(-50%,-50%)",
-            }}
-          >
-            <BiShoppingBag style={{ fontSize: "30px" }} />
-          </div>
-          <div
-            style={{
-              position: "absolute",
-              left: "90%",
-              top: "70%",
-              transform: "translate(-50%,-50%)",
-            }}
-          >
-            <Logout />
+            <div className="row">
+              <span
+                className="col-md-4"
+                style={{ marginTop: "1%", marginRight: "-7%" }}
+              >
+                {user}{" "}
+              </span>
+              <BiShoppingBag
+                className="col-md-4"
+                style={{ fontSize: "30px" }}
+              />
+              <Logout />
+            </div>
           </div>
         </>
       ) : (

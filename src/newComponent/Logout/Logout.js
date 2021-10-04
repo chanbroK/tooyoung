@@ -18,8 +18,8 @@ export default function Logout() {
   }
 
   return (
-    <>
+    <div className="col-md-4">
       <Button onClick={handlelogout}>Logout</Button>
-    </>
+    </div>
   );
 }
