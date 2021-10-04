@@ -62,7 +62,7 @@ import React, { useRef, useState } from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap";
 import { useAuth, currentUser } from "../../Config/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-
+import InsideNav from "../NavBar/InsideNav";
 export default function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -87,35 +87,109 @@ export default function LoginPage() {
   }
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">LogIn </h2>
+      <InsideNav />
+
+      <Card style={{ paddingTop: "10%" }}>
+        <Card.Body style={{ textAlign: "center" }}>
+          <span className="text-center mb-4" style={{ fontSize: "2em" }}>
+            <b>투영</b>에 오신것을 <br />
+            환영합니다{" "}
+          </span>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form
-            style={{ alignItems: "center", maxWidth: "400px" }}
+            style={{
+              alignItems: "center",
+              maxWidth: "400px",
+              marginLeft: "50%",
+              transform: "translate(-50%)",
+              paddingTop: "2%",
+            }}
             onSubmit={handleSubmit}
           >
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <Form.Control
+                type="email"
+                ref={emailRef}
+                required
+                placeholder="ID"
+                style={{
+                  borderTop: "0px",
+                  borderLeft: "0px",
+                  borderRight: "0px",
+                  borderRadius: "0px",
+                }}
+              />
             </Form.Group>
+            <br />
             <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
+              <Form.Control
+                type="password"
+                ref={passwordRef}
+                required
+                placeholder="PW"
+                style={{
+                  borderTop: "0px",
+                  borderLeft: "0px",
+                  borderRight: "0px",
+                  borderRadius: "0px",
+                }}
+              />
             </Form.Group>
-
-            <Button className="w-100" type="submit" disabled={loading}>
-              LogIn
+            <br />
+            <br />
+            <Button
+              className="w-100"
+              type="submit"
+              disabled={loading}
+              style={{
+                backgroundColor: "#111",
+                borderColor: "#111",
+                height: "4vh",
+              }}
+            >
+              LOGIN
+            </Button>
+            <Link to="./signup">
+              <Button
+                className="w-100"
+                disabled={loading}
+                style={{
+                  backgroundColor: "#AFAFAF",
+                  borderColor: "#AFAFAF",
+                  height: "4vh",
+                  marginTop: "2%",
+                }}
+              >
+                JOIN
+              </Button>
+            </Link>
+            <Button
+              className="w-100"
+              disabled={loading}
+              style={{
+                backgroundColor: "#AFAFAF",
+                borderColor: "#AFAFAF",
+                height: "4vh",
+                marginTop: "2%",
+              }}
+            >
+              ID 찾기
+            </Button>
+            <Button
+              className="w-100"
+              disabled={loading}
+              style={{
+                backgroundColor: "#AFAFAF",
+                borderColor: "#AFAFAF",
+                height: "4vh",
+                marginTop: "2%",
+              }}
+            >
+              PW 찾기
             </Button>
           </Form>
-          <div className="w-100 text-center mt-2">
-            <Link to="/forgot-password"> 비밀번호 찾기 </Link>
-          </div>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        아이디가 없으신가요? <Link to="/signup"> Login</Link>
-      </div>
     </>
   );
 }
