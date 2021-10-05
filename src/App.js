@@ -17,7 +17,7 @@ import { auth, db } from "./Config/Config";
 import LoginPage from "./newComponent/LoginPage/LoginPage";
 import { AuthProvider } from "./Config/AuthContext";
 import PrivateRoute from "./Config/PrivateRoute";
-
+import Terms from "./newComponent/SignUp/Terms";
 const MAX = 5;
 const MIN = 1;
 
@@ -42,6 +42,7 @@ const App = () => {
           <ReactRouterDom.Route path="/detail/:id">
             <Detail shoes={shoes} />
           </ReactRouterDom.Route>
+          <ReactRouterDom.Route path="/terms" component={Terms} />
           <ReactRouterDom.Route path="/upload" component={upload} />
           <ReactRouterDom.Route path="/signup" component={SignUp} />
           <ReactRouterDom.Route path="/login" component={LoginPage} />

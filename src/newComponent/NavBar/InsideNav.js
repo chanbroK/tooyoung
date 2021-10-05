@@ -60,7 +60,7 @@ export default function InsideNav() {
               className="container"
               style={{
                 position: "absolute",
-                left: "72%",
+                left: "80%",
                 top: "70%",
                 transform: "translate(-50%,-50%)",
                 width: "15%",

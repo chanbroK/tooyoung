@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 import { auth, db } from "../../Config/Config";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import InsideNav from "../NavBar/InsideNav";
+import { Button } from "react-bootstrap";
+
+const Categoly = [
+  { key: 1, value: "남자" },
+  { key: 2, value: "여자" },
+];
+
 export const SignUp = (props) => {
   // defining state
+  const [IsCategory, setIsCategory] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [Birth, setBirth] = useState("");
+  const [Gender, setGender] = useState("");
+  const [phonNum, setPhonNum] = useState("");
   const [error, setError] = useState("");
-
+  const location = useLocation();
+  const checked0 = location.state.checked0;
+  const checked1 = location.state.checked1;
+  const checked2 = location.state.checked2;
   // signup
   const signup = (e) => {
     e.preventDefault();
@@ -33,56 +47,115 @@ export const SignUp = (props) => {
       })
       .catch((err) => setError(err.message));
   };
-
+  console.log(checked0, checked1, checked2);
   return (
     <>
       <InsideNav />
-      <div className="container">
+      <div
+        className="container"
+        style={{
+          paddingTop: "160px",
+          width: "70%",
+          marginLeft: "30%",
+        }}
+      >
+        <h2>회원가입</h2>
         <br />
-        <h2>Sign up</h2>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <form autoComplete="off" className="form-group" onSubmit={signup}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            required
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-          />
-          <br />
-          <label htmlFor="email">Email</label>
+        <form
+          autoComplete="off"
+          className="form-group"
+          onSubmit={signup}
+          style={{ width: "50%" }}
+        >
+          <label htmlFor="email">이메일</label>
           <input
             type="email"
             className="form-control"
             required
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            style={{ borderColor: "black" }}
           />
           <br />
-          <label htmlFor="passowrd">Password</label>
+          <label htmlFor="passowrd">비밀번호</label>
           <input
             type="password"
             className="form-control"
             required
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            style={{ borderColor: "black" }}
           />
           <br />
-          <button type="submit" className="btn btn-success btn-md mybtn">
-            SUBMIT
-          </button>
+          <label htmlFor="name">이름</label>
+          <input
+            type="text"
+            className="form-control"
+            required
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            style={{ borderColor: "black" }}
+          />
+          <br />
+          <label htmlFor="name">생년월일</label>
+          <input
+            type="text"
+            className="form-control"
+            required
+            placeholder="ex:20001212"
+            onChange={(e) => setBirth(e.target.value)}
+            value={name}
+            style={{ borderColor: "black" }}
+          />
+          <br />
+          <label htmlFor="name">성별</label>
+          <br />
+          <select
+            style={{
+              width: "100%",
+              height: "5vh",
+              borderColor: "black",
+              borderRadius: "5px",
+            }}
+            onChange={(e) => setIsCategory(e.currentTarget.value)}
+            value={IsCategory}
+          >
+            {Categoly.map((item) => (
+              <option key={item.key} value={item.key}>
+                {item.value}
+              </option>
+            ))}
+          </select>
+          <br />
+          <br />
+          <label htmlFor="name">전화번호</label>
+          <input
+            type="text"
+            className="form-control"
+            required
+            placeholder="'-'를 생략하고 적어주세요"
+            onChange={(e) => setPhonNum(e.target.value)}
+            value={name}
+            style={{ borderColor: "black" }}
+          />
+          <br />
+
+          <Button
+            type="submit"
+            style={{
+              backgroundColor: "black",
+              borderColor: "black",
+              height: "4vh",
+              marginTop: "2%",
+              width: "20vw",
+              marginLeft: "20%",
+            }}
+          >
+            가입하기
+          </Button>
         </form>
         {error && <span className="error-msg">{error}</span>}
         <br />
-        <span>
-          Already have an account? Login
-          <Link to="login"> Here</Link>
-        </span>
       </div>
     </>
   );
