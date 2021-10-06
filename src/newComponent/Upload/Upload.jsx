@@ -2,6 +2,7 @@ import { title } from "process";
 import React, { useState } from "react";
 import DropProduct from "../utils/FileUpload";
 import { storage, db } from "../../Config/Config";
+import { InputGroup } from "react-bootstrap";
 
 const Categoly = [
   { key: 1, value: "상의" },
@@ -11,11 +12,38 @@ const Categoly = [
   { key: 5, value: "겉옷" },
 ];
 
+function pasteIntoInput(el, text) {
+  el.focus();
+  if (
+    typeof el.selectionStart == "number" &&
+    typeof el.selectionEnd == "number"
+  ) {
+    var val = el.value;
+    var selStart = el.selectionStart;
+    el.value = val.slice(0, selStart) + text + val.slice(el.selectionEnd);
+    el.selectionEnd = el.selectionStart = selStart + text.length;
+  } else if (typeof document.selection != "undefined") {
+    var textRange = document.selection.createRange();
+    textRange.text = text;
+    textRange.collapse(false);
+    textRange.select();
+  }
+}
+
+function handleEnter(evt) {
+  if (evt.keyCode == 13 && evt.shiftKey) {
+    if (evt.type == "keypress") {
+      pasteIntoInput(this, "\n");
+    }
+    evt.preventDefault();
+  }
+}
+
 export default function Upload() {
   const [Titile, setTitile] = useState("");
   const [ConTent, setConTent] = useState("");
   const [Price, setPrice] = useState(0);
-  const [Images, setImages] = useState(null);
+  const [Images, setImages] = useState([]);
   const [IsCategory, setIsCategory] = useState(1);
   const [isError, setIsError] = useState("");
 
@@ -24,7 +52,7 @@ export default function Upload() {
   const productImageHandler = (e) => {
     let selectedFile = e.currentTarget.files[0];
     if (selectedFile && types.includes(selectedFile.type)) {
-      setImages(selectedFile);
+      setImages([...Images, selectedFile]);
       setIsError("");
     } else {
       setImages(null);
@@ -77,6 +105,7 @@ export default function Upload() {
       }
     );
   };
+
   return (
     <div
       style={{ maxWidth: "700px", margin: "2rem auto" }}
@@ -87,6 +116,7 @@ export default function Upload() {
         <br />
         <input
           type="file"
+          multiple
           className="form-control"
           onChange={productImageHandler}
         />
@@ -103,11 +133,14 @@ export default function Upload() {
         </div>
         <br />
         <br />
+        <textarea id="test"></textarea>
+        <br />
         <label>설명</label>
         <br />
         <input
           className="form-control"
           onChange={(e) => setConTent(e.currentTarget.value)}
+          style={{ height: "20vh" }}
           value={ConTent}
         />
         <br />
