@@ -12,32 +12,32 @@ const Categoly = [
   { key: 5, value: "겉옷" },
 ];
 
-function pasteIntoInput(el, text) {
-  el.focus();
-  if (
-    typeof el.selectionStart == "number" &&
-    typeof el.selectionEnd == "number"
-  ) {
-    var val = el.value;
-    var selStart = el.selectionStart;
-    el.value = val.slice(0, selStart) + text + val.slice(el.selectionEnd);
-    el.selectionEnd = el.selectionStart = selStart + text.length;
-  } else if (typeof document.selection != "undefined") {
-    var textRange = document.selection.createRange();
-    textRange.text = text;
-    textRange.collapse(false);
-    textRange.select();
-  }
-}
+// function pasteIntoInput(el, text) {
+//   el.focus();
+//   if (
+//     typeof el.selectionStart == "number" &&
+//     typeof el.selectionEnd == "number"
+//   ) {
+//     var val = el.value;
+//     var selStart = el.selectionStart;
+//     el.value = val.slice(0, selStart) + text + val.slice(el.selectionEnd);
+//     el.selectionEnd = el.selectionStart = selStart + text.length;
+//   } else if (typeof document.selection != "undefined") {
+//     var textRange = document.selection.createRange();
+//     textRange.text = text;
+//     textRange.collapse(false);
+//     textRange.select();
+//   }
+// }
 
-function handleEnter(evt) {
-  if (evt.keyCode == 13 && evt.shiftKey) {
-    if (evt.type == "keypress") {
-      pasteIntoInput(this, "\n");
-    }
-    evt.preventDefault();
-  }
-}
+// function handleEnter(evt) {
+//   if (evt.keyCode == 13 && evt.shiftKey) {
+//     if (evt.type == "keypress") {
+//       pasteIntoInput(this, "\n");
+//     }
+//     evt.preventDefault();
+//   }
+// }
 
 export default function Upload() {
   const [Titile, setTitile] = useState("");
@@ -46,7 +46,8 @@ export default function Upload() {
   const [Images, setImages] = useState([]);
   const [IsCategory, setIsCategory] = useState(1);
   const [isError, setIsError] = useState("");
-
+  const [SizeforSplit, setSizforSplit] = useState("");
+  const [Size, setSize] = useState([]);
   const types = ["images/jpeg", "image/png"];
 
   const productImageHandler = (e) => {
@@ -60,13 +61,9 @@ export default function Upload() {
     }
   };
 
-  const handleChange = (e) => {
-    for (let i = 0; i < e.currentTarget.files.length; i++) {
-      const newImage = e.currentTarget.files[i];
-      setImages((prevState) => [...prevState, newImage]);
-    }
+  const splitHandler = () => {
+    setSize(SizeforSplit.split(","));
   };
-
   const addProduct = (e) => {
     e.preventDefault();
     //console.log(Titile, ConTent, Price, IsCategory);
@@ -92,12 +89,14 @@ export default function Upload() {
                 ProductName: Titile,
                 ProductPrice: Number(Price),
                 ProductContent: ConTent,
+                ProductSizes: Array(Size),
               })
               .then(() => {
                 setConTent("");
                 setImages("");
                 setIsError("");
                 setPrice(0);
+                setSizforSplit("");
                 document.getElementById("file").value = "";
               })
               .catch((err) => setIsError(err.message));
@@ -132,17 +131,14 @@ export default function Upload() {
           />
         </div>
         <br />
-        <br />
-        <textarea id="test"></textarea>
-        <br />
+
         <label>설명</label>
         <br />
-        <input
-          className="form-control"
+        <textarea
+          style={{ width: "100%", height: "20vh" }}
           onChange={(e) => setConTent(e.currentTarget.value)}
-          style={{ height: "20vh" }}
           value={ConTent}
-        />
+        ></textarea>
         <br />
         <br />
         <label>가격</label>
@@ -154,6 +150,13 @@ export default function Upload() {
           value={Price}
         />
         <br />
+        <br />
+        <input
+          className="form-control"
+          onChange={(e) => setSizforSplit(e.currentTarget.value)}
+        />
+        <br />
+        <button onClick={splitHandler}> split</button>
         <br />
         <select
           onChange={(e) => setIsCategory(e.currentTarget.value)}

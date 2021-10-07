@@ -9,6 +9,7 @@ const Categoly = [
   { key: 1, value: "남자" },
   { key: 2, value: "여자" },
 ];
+
 export default function Detail(props) {
   const [IsCategory, setIsCategory] = useState(1);
   let { id } = useParams();
@@ -18,6 +19,15 @@ export default function Detail(props) {
   const [Name, setName] = useState("");
   const [Content, setContent] = useState("");
   const [Price, setPrice] = useState("");
+  const [Size, setSize] = useState([]);
+  const getsize = async (id) => {
+    const ref = db.collection(`Products/$(id)/inform/size`);
+  };
+  // const productRef = db.collection("Products");
+  // const snapshot = productRef.get();
+  // snapshot.forEach((doc) => {
+  //   console.log(doc.id, "=>", doc.data());
+  // });
   db.collection("Products")
     .doc(id)
     .get()

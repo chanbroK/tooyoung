@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import * as ReactRouterDom from "react-router-dom";
 import Normal from "./Normal";
 import Manager from "./Manager";
-import Test from "./test";
+
 import App from "./App";
 import "./index.css";
 import { RemoveScroll } from "react-remove-scroll";
