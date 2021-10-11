@@ -55,6 +55,7 @@ export default function Upload() {
     if (selectedFile && types.includes(selectedFile.type)) {
       setImages([...Images, selectedFile]);
       setIsError("");
+      console.log(Images);
     } else {
       setImages(null);
       setIsError("Pleas select the image type jpeg/png");
@@ -68,6 +69,7 @@ export default function Upload() {
     e.preventDefault();
     //console.log(Titile, ConTent, Price, IsCategory);
     const uploadTask = storage.ref(`product-images/${Images.name}`).put(Images);
+    console.log(uploadTask, Images.name, Images);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -79,8 +81,8 @@ export default function Upload() {
       },
       () => {
         storage
-          .ref("product-images")
-          .child(Images.name)
+          .ref(`product-images/${Images.name}`)
+          // .child(Images.name)
           .getDownloadURL()
           .then((url) => {
             db.collection("Products")
@@ -89,7 +91,7 @@ export default function Upload() {
                 ProductName: Titile,
                 ProductPrice: Number(Price),
                 ProductContent: ConTent,
-                ProductSizes: Array(Size),
+                ProductSizes: Size,
               })
               .then(() => {
                 setConTent("");
@@ -97,7 +99,7 @@ export default function Upload() {
                 setIsError("");
                 setPrice(0);
                 setSizforSplit("");
-                document.getElementById("file").value = "";
+                document.getElementById("").value = "";
               })
               .catch((err) => setIsError(err.message));
           });
