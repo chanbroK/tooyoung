@@ -44,6 +44,7 @@ export default function Upload() {
   const [ConTent, setConTent] = useState("");
   const [Price, setPrice] = useState(0);
   const [Images, setImages] = useState([]);
+  const [Urls, setUrls] = useState([]);
   const [IsCategory, setIsCategory] = useState(1);
   const [isError, setIsError] = useState("");
   const [SizeforSplit, setSizforSplit] = useState("");
@@ -51,62 +52,67 @@ export default function Upload() {
   const types = ["images/jpeg", "image/png"];
 
   const productImageHandler = (e) => {
-    let selectedFile = e.currentTarget.files[0];
-    if (selectedFile && types.includes(selectedFile.type)) {
-      setImages([...Images, selectedFile]);
-      setIsError("");
-      console.log(Images);
-    } else {
-      setImages(null);
-      setIsError("Pleas select the image type jpeg/png");
+    for (let i = 0; i < e.currentTarget.files.length; i++) {
+      const newImage = e.currentTarget.files[i];
+      newImage["id"] = Math.random();
+      setImages((prevState) => [...prevState, newImage]);
     }
   };
 
   const splitHandler = () => {
     setSize(SizeforSplit.split(","));
   };
+
   const addProduct = (e) => {
     e.preventDefault();
+    const promise = [];
+    setSize(SizeforSplit.split(","));
+    Images.map((image) => {
+      const uploadTask = storage.ref(`product-images/${image.name}`).put(image);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        },
+        (err) => {
+          setIsError(err.message);
+        },
+        async () => {
+          await storage
+            .ref(`product-images/${image.name}`)
+            .child(image.name)
+            .getDownloadURL()
+            .then((Urls) => {
+              setUrls((prevState) => [...prevState, Urls]);
+            });
+        }
+      );
+    });
+    db.collection("Products")
+      .add({
+        ProductImage: Urls,
+        ProductName: Titile,
+        ProductPrice: Number(Price),
+        ProductContent: ConTent,
+        ProductSizes: Size,
+      })
+      .then(() => {
+        setUrls([]);
+        setConTent("");
+        setImages("");
+        setIsError("");
+        setPrice(0);
+        setSizforSplit("");
+        document.getElementById("").value = "";
+      })
+      .catch((err) => setIsError(err.message));
     //console.log(Titile, ConTent, Price, IsCategory);
-    const uploadTask = storage.ref(`product-images/${Images.name}`).put(Images);
-    console.log(uploadTask, Images.name, Images);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      },
-      (err) => {
-        setIsError(err.message);
-      },
-      () => {
-        storage
-          .ref(`product-images/${Images.name}`)
-          // .child(Images.name)
-          .getDownloadURL()
-          .then((url) => {
-            db.collection("Products")
-              .add({
-                ProductImage: url,
-                ProductName: Titile,
-                ProductPrice: Number(Price),
-                ProductContent: ConTent,
-                ProductSizes: Size,
-              })
-              .then(() => {
-                setConTent("");
-                setImages("");
-                setIsError("");
-                setPrice(0);
-                setSizforSplit("");
-                document.getElementById("").value = "";
-              })
-              .catch((err) => setIsError(err.message));
-          });
-      }
-    );
+    Promise.all(promise)
+      .then(() => alert("All Images upload"))
+      .catch((err) => console.log(err));
   };
-
+  console.log(Images);
   return (
     <div
       style={{ maxWidth: "700px", margin: "2rem auto" }}
