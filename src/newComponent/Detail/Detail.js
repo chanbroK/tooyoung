@@ -14,12 +14,12 @@ export default function Detail(props) {
   const [IsCategory, setIsCategory] = useState(1);
   let { id } = useParams();
   const { products } = useContext(ProductsContext);
-  console.log(id);
   const [Image, setImage] = useState([]);
   const [Name, setName] = useState("");
   const [Content, setContent] = useState("");
   const [Price, setPrice] = useState("");
   const [Size, setSize] = useState([]);
+  const sizes = [];
   const getsize = async (id) => {
     const ref = db.collection(`Products/$(id)/inform/size`);
   };
@@ -36,8 +36,11 @@ export default function Detail(props) {
       setName(snapshot.data().ProductName);
       setContent(snapshot.data().ProductContent);
       setPrice(snapshot.data().ProductPrice);
+      setSize(snapshot.data().ProductSizes);
     });
-
+  for (var i = 0; i < Size.length; i++) {
+    sizes[i] = Size[i];
+  }
   return (
     <>
       <InsideNav />
@@ -59,7 +62,7 @@ export default function Detail(props) {
         >
           <div className="product-img col-md-6">
             <img
-              src={Image}
+              src={Image[0]}
               width="80%"
               height="95%"
               style={{
@@ -83,8 +86,13 @@ export default function Detail(props) {
                 <br />
               </span>
               <span>
-                <b>size</b> &nbsp;&nbsp;&nbsp;｜ 1,2,3 <br />
+                <b>size</b> &nbsp;&nbsp;&nbsp;｜
+                {sizes.map((item) => (
+                  <span>{item}.</span>
+                ))}
               </span>
+
+              <br />
             </div>
             <br />
             <div
@@ -129,11 +137,9 @@ export default function Detail(props) {
                 <option value="0" disabled selected hidden>
                   SIZE
                 </option>
-                {/* {Categoly.map((item) => (
-                  <option key={item.key} value={item.key}>
-                    {item.value}
-                  </option>
-                ))} */}
+                {sizes.map((item) => (
+                  <option>{item}</option>
+                ))}
               </select>
               <div>
                 <Button

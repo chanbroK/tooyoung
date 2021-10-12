@@ -28,12 +28,10 @@ export const Products = () => {
                   />
                 </div>
                 <div className="product-name">
-                  <h4>상품명 : {product.ProductName}</h4>
+                  <h5> {product.ProductName}</h5>
                 </div>
                 <div className="product-price">
-                  <p>
-                    {product.ProductContent} & {product.ProductPrice}
-                  </p>
+                  <h3>{product.ProductPrice}$</h3>
                 </div>
               </div>
             </Link>

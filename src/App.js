@@ -18,6 +18,7 @@ import LoginPage from "./newComponent/LoginPage/LoginPage";
 import { AuthProvider } from "./Config/AuthContext";
 import PrivateRoute from "./Config/PrivateRoute";
 import Terms from "./newComponent/SignUp/Terms";
+import BrandUpload from "./newComponent/Upload/BrandUpload";
 import Test from "./newComponent/Test";
 const MAX = 5;
 const MIN = 1;
@@ -48,6 +49,7 @@ const App = () => {
           <ReactRouterDom.Route path="/signup" component={SignUp} />
           <ReactRouterDom.Route path="/login" component={LoginPage} />
           <ReactRouterDom.Route path="/test" component={Test} />
+          <ReactRouterDom.Route path="/brandupload" component={BrandUpload} />
         </AuthProvider>
       </div>
     </>

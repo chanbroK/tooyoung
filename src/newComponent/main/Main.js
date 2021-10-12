@@ -33,14 +33,15 @@ export default function Main({ user }) {
             <HashSearch />
           </div>
         </div>
-        <div className="container" style={{ marginTop: "5%" }}>
+        {/* <div className="container" style={{ marginTop: "5%" }}>
           <div className="row">
             {shoes.map((num, i) => {
               return <Product shoes={num} i={i} key={i} />;
             })}
           </div>
-        </div>
-        <div className="container">
+        </div> */}
+
+        <div className="container" style={{ marginTop: "2%" }}>
           <Products />
         </div>
       </div>

@@ -1,8 +1,6 @@
 import { title } from "process";
 import React, { useState } from "react";
-import DropProduct from "../utils/FileUpload";
 import { storage, db } from "../../Config/Config";
-import { InputGroup } from "react-bootstrap";
 
 const Categoly = [
   { key: 1, value: "상의" },
@@ -84,9 +82,9 @@ export default function Upload() {
             .ref("product-images")
             .child(image.name)
             .getDownloadURL()
-            .then((Urls) => {
-              setUrls((prevState) => [...prevState, Urls]);
-              console.log(Urls, Size);
+            .then((url) => {
+              setUrls((prevState) => [...prevState, url]);
+              console.log(url, Size);
             });
         }
       );
