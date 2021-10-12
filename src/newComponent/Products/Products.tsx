@@ -21,7 +21,7 @@ export const Products = () => {
               <div className="product-card" key={product.ProductID}>
                 <div className="product-img">
                   <img
-                    src={product.ProductImage}
+                    src={product.ProductImage[0]}
                     width="100%"
                     height="300px"
                     style={{ marginBottom: "5%" }}

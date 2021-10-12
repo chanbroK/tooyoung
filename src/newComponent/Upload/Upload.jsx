@@ -69,6 +69,7 @@ export default function Upload() {
     setSize(SizeforSplit.split(","));
     Images.map((image) => {
       const uploadTask = storage.ref(`product-images/${image.name}`).put(image);
+      promise.push(uploadTask);
       uploadTask.on(
         "state_changed",
         (snapshot) => {
@@ -80,11 +81,12 @@ export default function Upload() {
         },
         async () => {
           await storage
-            .ref(`product-images/${image.name}`)
+            .ref("product-images")
             .child(image.name)
             .getDownloadURL()
             .then((Urls) => {
               setUrls((prevState) => [...prevState, Urls]);
+              console.log(Urls, Size);
             });
         }
       );
@@ -105,9 +107,10 @@ export default function Upload() {
         setPrice(0);
         setSizforSplit("");
         document.getElementById("").value = "";
+        alert("upload!!");
       })
       .catch((err) => setIsError(err.message));
-    //console.log(Titile, ConTent, Price, IsCategory);
+    console.log(Titile, ConTent, Price, IsCategory);
     Promise.all(promise)
       .then(() => alert("All Images upload"))
       .catch((err) => console.log(err));
