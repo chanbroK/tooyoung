@@ -20,6 +20,7 @@ export class ProductsContextProvider extends React.Component {
             ProductImage: change.doc.data().ProductImage,
             ProductContent: change.doc.data().ProductContent,
             ProductSizes: change.doc.data().ProductSizes,
+            ProductColor: change.doc.data().ProductColor,
           });
         }
         this.setState({

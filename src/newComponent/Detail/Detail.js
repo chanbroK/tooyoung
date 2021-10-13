@@ -19,6 +19,8 @@ export default function Detail(props) {
   const [Content, setContent] = useState("");
   const [Price, setPrice] = useState("");
   const [Size, setSize] = useState([]);
+  const [Color, setColor] = useState([]);
+  const colors = [];
   const sizes = [];
   const getsize = async (id) => {
     const ref = db.collection(`Products/$(id)/inform/size`);
@@ -37,9 +39,13 @@ export default function Detail(props) {
       setContent(snapshot.data().ProductContent);
       setPrice(snapshot.data().ProductPrice);
       setSize(snapshot.data().ProductSizes);
+      setColor(snapshot.data().ProductColor);
     });
   for (var i = 0; i < Size.length; i++) {
     sizes[i] = Size[i];
+  }
+  for (var i = 0; i < Color.length; i++) {
+    colors[i] = Color[i];
   }
   return (
     <>
@@ -57,7 +63,8 @@ export default function Detail(props) {
             width: "80%",
             marginLeft: "10%",
             paddingTop: "5%",
-            height: "70vh",
+            height: "75vh",
+            paddingBottom: "5%",
           }}
         >
           <div className="product-img col-md-6">
@@ -82,13 +89,16 @@ export default function Detail(props) {
                 <b>fabric</b> ｜ wool <br />
               </span>
               <span>
-                <b>color</b> &nbsp;｜ Black/Grey/Blue
+                <b>color</b> &nbsp;｜
+                {colors.map((item) => (
+                  <span>{item}/</span>
+                ))}
                 <br />
               </span>
               <span>
                 <b>size</b> &nbsp;&nbsp;&nbsp;｜
                 {sizes.map((item) => (
-                  <span>{item}.</span>
+                  <span>{item}/</span>
                 ))}
               </span>
 
@@ -116,11 +126,9 @@ export default function Detail(props) {
                 <option value="0" disabled selected hidden>
                   COLOR
                 </option>
-                {/* {Categoly.map((item) => (
-                  <option key={item.key} value={item.key}>
-                    {item.value}
-                  </option>
-                ))} */}
+                {colors.map((item) => (
+                  <option>{item}</option>
+                ))}
               </select>
 
               <select
@@ -173,6 +181,34 @@ export default function Detail(props) {
               </div>
             </Form>
           </div>
+        </div>
+      </div>
+      <div>
+        <div style={{ marginTop: "5%", marginBottom: "5%" }}>
+          <img
+            src={Image[1]}
+            width="50%"
+            height="80%"
+            style={{
+              maxHeight: "500px",
+              marginLeft: "25%",
+              border: "1px solid",
+            }}
+          />
+          <div style={{ marginTop: "5%", width: "50%", marginLeft: "25%" }}>
+            <a>{Content}</a>
+          </div>
+        </div>
+        <div style={{ marginBottom: "5%" }}>
+          <img
+            src={Image[2]}
+            width="50%"
+            height="100%"
+            style={{
+              marginLeft: "25%",
+              border: "1px solid",
+            }}
+          />
         </div>
       </div>
     </>
