@@ -8,7 +8,7 @@ import Data from "../Product/Product";
 import Detail from "../Detail/Detail";
 import { Products } from "../Products/Products";
 import { useHistory } from "react-router-dom";
-import { auth } from "../../Config/Config";
+import { auth, db } from "../../Config/Config";
 
 export default function Main({ user }) {
   const [shoes, setShoes] = useState(Data);

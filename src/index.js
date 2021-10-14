@@ -13,6 +13,7 @@ import Detail from "./newComponent/Detail/Detail";
 import Product from "./newComponent/Product/Product";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ProductsContextProvider } from "./global/ProductsContext";
+
 ReactDOM.render(
   <React.StrictMode>
     {/* <RemoveScroll> */}

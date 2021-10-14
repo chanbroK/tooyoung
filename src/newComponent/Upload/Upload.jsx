@@ -47,7 +47,7 @@ export default function Upload() {
   const [isError, setIsError] = useState("");
   const [SizeforSplit, setSizforSplit] = useState("");
   const [Size, setSize] = useState([]);
-  const types = ["images/jpeg", "image/png"];
+  const types = ["image/jpg", "image/jpeg", "image/png", "image/PNG"];
 
   const productImageHandler = (e) => {
     for (let i = 0; i < e.currentTarget.files.length; i++) {

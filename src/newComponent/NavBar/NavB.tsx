@@ -10,7 +10,7 @@ export default function NavB() {
   const { currentUser } = useAuth();
   const userInfo = useAuth().userInfo;
   const [user, setuser] = useState(null);
-
+  const [uId, setuId] = useState(null);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {

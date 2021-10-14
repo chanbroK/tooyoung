@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ProductsContext } from "../../global/ProductsContext";
 import { useHistory, useParams } from "react-router-dom";
-import { db } from "../../Config/Config";
+import { auth, db } from "../../Config/Config";
 import InsideNav from "../NavBar/InsideNav";
 import Brand from "../Brand/Brand";
 import { Button, Form } from "react-bootstrap";
+import { CartContext } from "../../global/CartContext";
+import { useAuth } from "../../Config/AuthContext";
 const Categoly = [
   { key: 1, value: "남자" },
   { key: 2, value: "여자" },
@@ -13,23 +15,36 @@ const Categoly = [
 export default function Detail(props) {
   const [IsCategory, setIsCategory] = useState(1);
   let { id } = useParams();
-  const { products } = useContext(ProductsContext);
+  const history = useHistory();
   const [Image, setImage] = useState([]);
   const [Name, setName] = useState("");
   const [Content, setContent] = useState("");
   const [Price, setPrice] = useState("");
   const [Size, setSize] = useState([]);
   const [Color, setColor] = useState([]);
+  const [userId, setuserId] = useState("");
   const colors = [];
   const sizes = [];
   const getsize = async (id) => {
     const ref = db.collection(`Products/$(id)/inform/size`);
   };
-  // const productRef = db.collection("Products");
-  // const snapshot = productRef.get();
-  // snapshot.forEach((doc) => {
-  //   console.log(doc.id, "=>", doc.data());
-  // });
+
+  const { currentUser } = useAuth();
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        db.collection("SignedUpUsersData")
+          .doc(user.uid)
+          .get()
+          .then((snapshot) => {
+            setuserId(snapshot.data().uid);
+          });
+      } else {
+        setuserId(null);
+      }
+    });
+  }, []);
+
   db.collection("Products")
     .doc(id)
     .get()
@@ -47,6 +62,17 @@ export default function Detail(props) {
   for (var i = 0; i < Color.length; i++) {
     colors[i] = Color[i];
   }
+
+  let Product;
+  const cartHandler = (e) => {
+    e.preventDefault();
+    db.collection(`SignedUpUsersData/${currentUser.uid}/Test`)
+      .add({
+        ProductName: Name,
+        PricePrice: Price,
+      })
+      .then(history.push("/"));
+  };
   return (
     <>
       <InsideNav />
@@ -161,6 +187,9 @@ export default function Detail(props) {
                     width: "10vw",
                     marginLeft: "15%",
                     borderRadius: "0px",
+                  }}
+                  onClick={(e) => {
+                    cartHandler(e);
                   }}
                 >
                   <b>CART</b>
