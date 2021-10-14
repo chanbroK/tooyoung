@@ -20,7 +20,7 @@ import PrivateRoute from "./Config/PrivateRoute";
 import Terms from "./newComponent/SignUp/Terms";
 import BrandUpload from "./newComponent/Upload/BrandUpload";
 import { Test } from "./newComponent/Test";
-import { Cart } from "./newComponent/Cart/Cart";
+import Cart from "./newComponent/Cart/Cart";
 const MAX = 5;
 const MIN = 1;
 

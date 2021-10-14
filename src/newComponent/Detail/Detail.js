@@ -23,6 +23,8 @@ export default function Detail(props) {
   const [Size, setSize] = useState([]);
   const [Color, setColor] = useState([]);
   const [userId, setuserId] = useState("");
+  const [userSize, setUserSize] = useState("");
+  const [userColor, setUserColor] = useState("");
   const colors = [];
   const sizes = [];
   const getsize = async (id) => {
@@ -62,16 +64,22 @@ export default function Detail(props) {
   for (var i = 0; i < Color.length; i++) {
     colors[i] = Color[i];
   }
-
+  var Qty = 1;
   let Product;
   const cartHandler = (e) => {
     e.preventDefault();
-    db.collection(`SignedUpUsersData/${currentUser.uid}/Test`)
-      .add({
-        ProductName: Name,
-        PricePrice: Price,
-      })
-      .then(history.push("/"));
+    if (userColor && userSize != "") {
+      db.collection(`SignedUpUsersData/${currentUser.uid}/Cart`)
+        .add({
+          ProductName: Name,
+          PricePrice: Price,
+          ProductImage: Image,
+          ProductSize: userSize,
+          ProductQty: Qty,
+          ProductColor: userColor,
+        })
+        .then(history.push("/"));
+    }
   };
   return (
     <>
@@ -146,7 +154,7 @@ export default function Detail(props) {
                   borderColor: "black",
                 }}
                 placeholder="COLOR"
-                onChange={(e) => setIsCategory(e.currentTarget.value)}
+                onChange={(e) => setUserColor(e.currentTarget.value)}
                 // value={IsCategory}
               >
                 <option value="0" disabled selected hidden>
@@ -165,7 +173,7 @@ export default function Detail(props) {
                   marginTop: "2%",
                 }}
                 placeholder="SIZE"
-                onChange={(e) => setIsCategory(e.currentTarget.value)}
+                onChange={(e) => setUserSize(e.currentTarget.value)}
                 // value={IsCategory}
               >
                 <option value="0" disabled selected hidden>

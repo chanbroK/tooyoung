@@ -71,10 +71,12 @@ export default function NavB() {
               >
                 {user}{" "}
               </span>
-              <BiShoppingBag
-                className="col-md-4"
-                style={{ fontSize: "30px" }}
-              />
+              <Link to="/cart">
+                <BiShoppingBag
+                  className="col-md-4"
+                  style={{ fontSize: "30px" }}
+                />
+              </Link>
               <Logout />
             </div>
           </div>
