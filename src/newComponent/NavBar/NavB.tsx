@@ -61,7 +61,7 @@ export default function NavB() {
               left: "80%",
               top: "70%",
               transform: "translate(-50%,-50%)",
-              width: "15%",
+              width: "20%",
             }}
           >
             <div className="row">
@@ -71,7 +71,7 @@ export default function NavB() {
               >
                 {user}{" "}
               </span>
-              <Link to="/cart">
+              <Link to="/cart" className="col-md-4">
                 <BiShoppingBag
                   className="col-md-4"
                   style={{ fontSize: "30px" }}
