@@ -62,10 +62,6 @@ export const Test = (props) => {
     console.log(Products);
   };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
-
   // state of totalProducts
   const [totalProducts, setTotalProducts] = useState(0);
   // getting cart products
