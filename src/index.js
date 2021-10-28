@@ -13,21 +13,23 @@ import Detail from "./newComponent/Detail/Detail";
 import Product from "./newComponent/Product/Product";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ProductsContextProvider } from "./global/ProductsContext";
-import { CartContextProvider } from "./global/CartContext";
-
+import CartContextProvider from "./global/CartContext";
+import { AuthProvider } from "./Config/AuthContext";
 ReactDOM.render(
   <React.StrictMode>
     {/* <RemoveScroll> */}
     {/* <NavB /> */}
-    <ProductsContextProvider>
-      <CartContextProvider>
+    <AuthProvider>
+      <ProductsContextProvider>
+        {/* <CartContextProvider> */}
         <ReactRouterDom.BrowserRouter>
           <ReactRouterDom.Switch>
             <App />
           </ReactRouterDom.Switch>
         </ReactRouterDom.BrowserRouter>
-      </CartContextProvider>
-    </ProductsContextProvider>
+        {/* </CartContextProvider> */}
+      </ProductsContextProvider>
+    </AuthProvider>
     {/* </RemoveScroll> */}
   </React.StrictMode>,
   document.getElementById("root")

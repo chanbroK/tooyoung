@@ -15,7 +15,7 @@ import upload from "./newComponent/Upload/Upload";
 import { SignUp } from "./newComponent/SignUp/SignUp";
 import { auth, db } from "./Config/Config";
 import LoginPage from "./newComponent/LoginPage/LoginPage";
-import { AuthProvider } from "./Config/AuthContext";
+
 import PrivateRoute from "./Config/PrivateRoute";
 import Terms from "./newComponent/SignUp/Terms";
 import BrandUpload from "./newComponent/Upload/BrandUpload";
@@ -39,20 +39,18 @@ const App = () => {
       </Helmet>
 
       <div style={{ fontFamily: "NanumBarumGothic" }}>
-        <AuthProvider>
-          <ReactRouterDom.Route path="/tooyoung" component={Manager} exact />
-          <PrivateRoute path="/" component={Main} exact />
-          <ReactRouterDom.Route path="/detail/:id">
-            <Detail shoes={shoes} />
-          </ReactRouterDom.Route>
-          <ReactRouterDom.Route path="/terms" component={Terms} />
-          <ReactRouterDom.Route path="/upload" component={upload} />
-          <ReactRouterDom.Route path="/signup" component={SignUp} />
-          <ReactRouterDom.Route path="/login" component={LoginPage} />
-          <ReactRouterDom.Route path="/test" component={Test} />
-          <ReactRouterDom.Route path="/brandupload" component={BrandUpload} />
-          <ReactRouterDom.Route path="/cart" component={Cart} />
-        </AuthProvider>
+        <ReactRouterDom.Route path="/tooyoung" component={Manager} exact />
+        <PrivateRoute path="/" component={Main} exact />
+        <ReactRouterDom.Route path="/detail/:id">
+          <Detail shoes={shoes} />
+        </ReactRouterDom.Route>
+        <ReactRouterDom.Route path="/terms" component={Terms} />
+        <ReactRouterDom.Route path="/upload" component={upload} />
+        <ReactRouterDom.Route path="/signup" component={SignUp} />
+        <ReactRouterDom.Route path="/login" component={LoginPage} />
+        <ReactRouterDom.Route path="/test" component={Test} />
+        <ReactRouterDom.Route path="/brandupload" component={BrandUpload} />
+        <ReactRouterDom.Route path="/cart" component={Cart} />
       </div>
     </>
   );
