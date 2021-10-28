@@ -70,7 +70,8 @@ export default function Detail(props) {
     e.preventDefault();
     if (userColor && userSize != "") {
       db.collection(`SignedUpUsersData/${currentUser.uid}/Cart`)
-        .add({
+        .doc(Name)
+        .set({
           ProductName: Name,
           PricePrice: Price,
           ProductImage: Image,

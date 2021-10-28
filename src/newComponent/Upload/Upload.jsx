@@ -63,6 +63,7 @@ export default function Upload() {
 
   const addProduct = (e) => {
     e.preventDefault();
+
     const promise = [];
     setSize(SizeforSplit.split(","));
     Images.map((image) => {
@@ -89,8 +90,10 @@ export default function Upload() {
         }
       );
     });
+
     db.collection("Products")
-      .add({
+      .doc(Titile)
+      .set({
         ProductImage: Urls,
         ProductName: Titile,
         ProductPrice: Number(Price),

@@ -7,17 +7,25 @@ import { ProductsContext } from "../../global/ProductsContext";
 export default function Cart() {
   const { currentUser } = useAuth();
   const [Image, setImage] = useState([]);
-  const [Name, setName] = useState("");
-  const [Price, setPrice] = useState("");
-  const [Size, setSize] = useState("");
-  const [Qty, setQty] = useState("");
-  const [Color, setColor] = useState("");
+  const [Name, setName] = useState([]);
+  const [Price, setPrice] = useState([]);
+  const [Size, setSize] = useState([]);
+  const [Qty, setQty] = useState([]);
+  const [Color, setColor] = useState([]);
   const { products } = useContext(ProductsContext);
+
+  // const getCart = async (pid) => {
+  //   const CartInfo = await db
+  //     .collection(`SignUpData/${currentUser.uid}/Cart${pid}`)
+  //     .get();
+
+  //   console.log(CartInfo, "asdf");
+  // };
 
   // db.collection("SignUpUsersData")
   //   .doc(currentUser.uid)
   //   .collection("Cart")
-  //   .doc(products.ProductId)
+  //   .orderBy()
   //   .get()
   //   .then((snapshot) => {
   //     setImage(snapshot.data().ProductImage);
@@ -32,7 +40,7 @@ export default function Cart() {
   const TotalPrice = Price;
   return (
     <div>
-      <span>{Image}</span>
+      <button>aaaaaa</button>
     </div>
   );
 }
